@@ -1,0 +1,22 @@
+{
+  "name": "@neogeek/fetch",
+  "description": "Wrapper around the browser method fetch that handles errors and response.",
+  "version": "1.0.0",
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "authors": [
+    {
+      "name": "Scott Doxey",
+      "email": "hello@scottdoxey.com",
+      "homepage": "http://scottdoxey.com/"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/neogeek/fetch",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neogeek/fetch.git"
+  },
+  "private": true
+}
