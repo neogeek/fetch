@@ -18,7 +18,7 @@
 export const request = async <T>(
   method: 'GET' | 'POST' | 'PUT' | 'DELETE',
   resource: RequestInfo,
-  body?: {},
+  body?: {} | null,
   headers?: {}
 ): Promise<{
   error?: { code?: number; message: string };
@@ -29,7 +29,9 @@ export const request = async <T>(
     const response = await fetch(resource, {
       method,
       headers: { 'Content-Type': 'application/json', ...headers },
-      body: (body instanceof String ? body : JSON.stringify(body)) as string,
+      body: body
+        ? ((body instanceof String ? body : JSON.stringify(body)) as string)
+        : undefined,
     });
 
     if (!response.ok) {
@@ -64,7 +66,7 @@ export const request = async <T>(
 };
 
 export const get = async <T>(url: string, headers?: {}) =>
-  request<T>('GET', url, headers);
+  request<T>('GET', url, null, headers);
 
 export const post = async <T>(url: string, body?: {}, headers?: {}) =>
   request<T>('POST', url, body, headers);
@@ -73,4 +75,4 @@ export const put = async <T>(url: string, body?: {}, headers?: {}) =>
   request<T>('PUT', url, body, headers);
 
 export const del = async <T>(url: string, headers?: {}) =>
-  request<T>('DELETE', url, headers);
+  request<T>('DELETE', url, null, headers);
