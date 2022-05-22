@@ -47,11 +47,13 @@ export const request = async <T>(
       throw new Error(`${response.status} ${response.statusText}`);
     }
 
+    const text = await response.text();
+
     if (response.headers.get('content-type')?.match(/json/)) {
-      return { data: (await response.json()) as T };
+      return { data: JSON.parse(text) as T, text };
     }
 
-    return { text: await response.text() };
+    return { text };
   } catch (error) {
     if (error instanceof Error) {
       return { error: { message: error.message } };
