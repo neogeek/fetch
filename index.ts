@@ -2,6 +2,13 @@
 
 // GitHub: https://github.com/neogeek/fetch
 
+export enum MethodType {
+  'GET' = 'GET',
+  'POST' = 'POST',
+  'PUT' = 'PUT',
+  'DELETE' = 'DELETE',
+}
+
 /**
  * Provides a wrapper around the browser method fetch that handles errors and response.
  *
@@ -16,7 +23,7 @@
  */
 
 export const request = async <T>(
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE',
+  method: MethodType,
   resource: RequestInfo,
   body?: {} | null,
   headers?: {}
@@ -66,13 +73,13 @@ export const request = async <T>(
 };
 
 export const get = async <T>(url: string, headers?: {}) =>
-  request<T>('GET', url, null, headers);
+  request<T>(MethodType.GET, url, null, headers);
 
 export const post = async <T>(url: string, body?: {}, headers?: {}) =>
-  request<T>('POST', url, body, headers);
+  request<T>(MethodType.POST, url, body, headers);
 
 export const put = async <T>(url: string, body?: {}, headers?: {}) =>
-  request<T>('PUT', url, body, headers);
+  request<T>(MethodType.PUT, url, body, headers);
 
 export const del = async <T>(url: string, headers?: {}) =>
-  request<T>('DELETE', url, null, headers);
+  request<T>(MethodType.DELETE, url, null, headers);
