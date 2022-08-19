@@ -83,3 +83,5 @@ export const put = async <T>(url: string, body?: {}, headers?: {}) =>
 
 export const del = async <T>(url: string, headers?: {}) =>
   request<T>(MethodType.DELETE, url, null, headers);
+
+export default request;
