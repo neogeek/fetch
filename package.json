@@ -2,8 +2,15 @@
   "name": "@neogeek/fetch",
   "description": "Wrapper around the browser method fetch that handles errors and response.",
   "version": "1.0.0",
+  "type": "module",
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "3.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "18.7.6"
   },
   "authors": [
     {
